@@ -11,8 +11,10 @@
 	export let title = undefined;
 	export let compact = false;
 	export let description = undefined;
+	export let alwaysRender = false;
 	import checkRequiredProps from '../inputs/checkRequiredProps.js';
 	$: compact = toBoolean(compact);
+	$: alwaysRender = toBoolean(alwaysRender);
 
 	let className = undefined;
 	export { className as class };
@@ -48,9 +50,30 @@
 					</slot>
 				</span>
 			</BaseAccordion.Trigger>
-			<BaseAccordion.Content>
-				<slot />
-			</BaseAccordion.Content>
+			{#if alwaysRender}
+				<div class="overflow-hidden text-sm accordion-render-content">
+					<div class="pb-4 pt-0">
+						<slot />
+					</div>
+				</div>
+			{:else}
+				<BaseAccordion.Content>
+					<slot />
+				</BaseAccordion.Content>
+			{/if}
 		</BaseAccordion.Item>
 	{/key}
 {/if}
+
+<style>
+	.accordion-render-content {
+		height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: all 0.2s ease;
+	}
+	:global([data-state="open"] .accordion-render-content) {
+		height: auto;
+		opacity: 1;
+	}
+</style>
