@@ -67,13 +67,11 @@
 
 <style>
 	.accordion-render-content {
-		height: 0;
+		max-height: 0;
 		overflow: hidden;
-		opacity: 0;
-		transition: all 0.2s ease;
+		transition: max-height 0.3s ease-in-out;
 	}
 	:global([data-state="open"] .accordion-render-content) {
-		height: auto;
-		opacity: 1;
+		max-height: 100vh;
 	}
 </style>
