@@ -7,6 +7,6 @@ Risk: the logging steps only; the steps that post the Asana comment and attachme
 
 ## Definition of Done
 
-- [ ] No `run:` block in the Asana sync workflow pastes a `${{ }}` step output into the script.
-- [ ] A comment body containing backticks and `$(...)` prints as literal text when the step's script runs under bash.
-- [ ] `actionlint` passes on the workflow file.
+- [x] No `run:` block in the Asana sync workflow pastes a `${{ }}` step output into the script.
+- [x] A comment body containing backticks and `$(...)` prints as literal text when the step's script runs under bash.
+- [x] `actionlint` passes on the workflow file.
